@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TablePageRoutingModule } from './table-routing.module';
 
-import { TablePage } from './table.page';
+import { TablePage, TableStatusColorPipe } from './table.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { TablePage } from './table.page';
     IonicModule,
     TablePageRoutingModule
   ],
-  declarations: [TablePage]
+  declarations: [TablePage, TableStatusColorPipe]
 })
 export class TablePageModule {}
