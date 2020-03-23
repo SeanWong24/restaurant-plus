@@ -16,6 +16,11 @@ export class AppComponent implements OnInit {
       title: 'Table',
       url: '/table',
       icon: 'grid'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'settings'
     }
   ];
 
