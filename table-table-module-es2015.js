@@ -9,7 +9,36 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Table</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-label>It Works!</ion-label>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Table</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item button *ngFor=\"let table of tableList\" (click)=\"goToDetailView(table.id)\">\n    <ion-row>\n      <ion-col>\n        <ion-label>{{table.name}}</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-label>({{table.occupied}}/{{table.capacity}})</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-badge slot=\"end\" [color]=\"table.status | tableStatusColor\">{{table.status}}</ion-badge>\n  </ion-item>\n</ion-content>");
+
+/***/ }),
+
+/***/ "./src/app/models/table.ts":
+/*!*********************************!*\
+  !*** ./src/app/models/table.ts ***!
+  \*********************************/
+/*! exports provided: Table */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return Table; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Table {
+    constructor() {
+        this.occupied = 0;
+        this.status = Table.Status.Unavailable;
+    }
+}
+Table.Status = {
+    Free: 'Free',
+    Using: 'Using',
+    Reserved: 'Reserved',
+    Dirty: 'Dirty',
+    Unavailable: 'Unavailable',
+};
+
 
 /***/ }),
 
@@ -35,6 +64,10 @@ const routes = [
     {
         path: '',
         component: _table_page__WEBPACK_IMPORTED_MODULE_3__["TablePage"]
+    },
+    {
+        path: ':id',
+        loadChildren: () => __webpack_require__.e(/*! import() | table-detail-table-detail-module */ "table-detail-table-detail-module").then(__webpack_require__.bind(null, /*! ./table-detail/table-detail.module */ "./src/app/table/table-detail/table-detail.module.ts")).then(m => m.TableDetailPageModule)
     }
 ];
 let TablePageRoutingModule = class TablePageRoutingModule {
@@ -84,7 +117,7 @@ TablePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
             _table_routing_module__WEBPACK_IMPORTED_MODULE_5__["TablePageRoutingModule"]
         ],
-        declarations: [_table_page__WEBPACK_IMPORTED_MODULE_6__["TablePage"]]
+        declarations: [_table_page__WEBPACK_IMPORTED_MODULE_6__["TablePage"], _table_page__WEBPACK_IMPORTED_MODULE_6__["TableStatusColorPipe"]]
     })
 ], TablePageModule);
 
@@ -109,29 +142,71 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/app/table/table.page.ts ***!
   \*************************************/
-/*! exports provided: TablePage */
+/*! exports provided: TablePage, TableStatusColorPipe */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablePage", function() { return TablePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableStatusColorPipe", function() { return TableStatusColorPipe; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _models_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/table */ "./src/app/models/table.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+
+
 
 
 let TablePage = class TablePage {
-    constructor() { }
+    constructor(navController) {
+        this.navController = navController;
+    }
     ngOnInit() {
     }
+    ionViewWillEnter() {
+        this.fetchTableList();
+    }
+    fetchTableList() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table');
+            this.tableList = yield response.json();
+        });
+    }
+    goToDetailView(tableId) {
+        this.navController.navigateForward('/table/' + tableId);
+    }
 };
+TablePage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] }
+];
 TablePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-table',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./table.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/table/table.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./table.page.scss */ "./src/app/table/table.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]])
 ], TablePage);
+
+let TableStatusColorPipe = class TableStatusColorPipe {
+    transform(status) {
+        switch (status) {
+            case _models_table__WEBPACK_IMPORTED_MODULE_2__["Table"].Status.Free:
+                return 'secondary';
+            case _models_table__WEBPACK_IMPORTED_MODULE_2__["Table"].Status.Using:
+                return 'success';
+            case _models_table__WEBPACK_IMPORTED_MODULE_2__["Table"].Status.Reserved:
+                return 'tertiary';
+            case _models_table__WEBPACK_IMPORTED_MODULE_2__["Table"].Status.Dirty:
+                return 'warning';
+            case _models_table__WEBPACK_IMPORTED_MODULE_2__["Table"].Status.Unavailable:
+                return 'danger';
+        }
+    }
+};
+TableStatusColorPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({ name: 'tableStatusColor' })
+], TableStatusColorPipe);
 
 
 
