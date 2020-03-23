@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TablePage } from './table.page';
+import { TableDetailPage } from './table-detail.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TablePage
-  },
-  {
-    path: ':id',
-    loadChildren: () => import('./table-detail/table-detail.module').then( m => m.TableDetailPageModule)
+    component: TableDetailPage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TablePageRoutingModule {}
+export class TableDetailPageRoutingModule {}

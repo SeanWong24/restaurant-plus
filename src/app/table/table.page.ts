@@ -1,5 +1,6 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Table } from '../models/table';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-table',
@@ -10,7 +11,7 @@ export class TablePage implements OnInit {
 
   tableList: Table[];
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {
   }
@@ -24,10 +25,15 @@ export class TablePage implements OnInit {
     this.tableList = await response.json();
   }
 
+  goToDetailView(tableId: string) {
+    this.navController.navigateForward('/table/' + tableId);
+  }
+
 }
 
 @Pipe({ name: 'tableStatusColor' })
 export class TableStatusColorPipe implements PipeTransform {
+
   transform(status: string): string {
     switch (status) {
       case Table.Status.Free:
@@ -42,4 +48,5 @@ export class TableStatusColorPipe implements PipeTransform {
         return 'danger';
     }
   }
+
 }

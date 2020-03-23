@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/table"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{(isCreatingNewTable ? 'Create New Table' : table.name) || 'Table Detail'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="table.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Capacity</ion-label>
+    <ion-input [(ngModel)]="table.capacity"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="save()">Save</ion-button>
+  <ion-button *ngIf="!isCreatingNewTable" color="danger" expand="block" (click)="delete()">Delete</ion-button>
+</ion-content>

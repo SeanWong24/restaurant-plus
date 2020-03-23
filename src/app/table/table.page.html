@@ -4,11 +4,16 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Table</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToDetailView('new')">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item button *ngFor="let table of tableList">
+  <ion-item button *ngFor="let table of tableList" (click)="goToDetailView(table.id)">
     <ion-row>
       <ion-col>
         <ion-label>{{table.name}}</ion-label>
