@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/table\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>{{(isCreatingNewTable ? 'Create New Table' : table.name) || 'Table Detail'}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-label position=\"floating\">Name</ion-label>\n    <ion-input [(ngModel)]=\"table.name\"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label position=\"floating\">Capacity</ion-label>\n    <ion-input [(ngModel)]=\"table.capacity\"></ion-input>\n  </ion-item>\n  <ion-button expand=\"block\" (click)=\"save()\">Save</ion-button>\n  <ion-button *ngIf=\"!isCreatingNewTable\" color=\"danger\" expand=\"block\" (click)=\"delete()\">Delete</ion-button>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/table\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>{{(isCreatingNewTable ? 'Create New Table' : table.name) || 'Table Detail'}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-label position=\"floating\">Name</ion-label>\n    <ion-input [(ngModel)]=\"table.name\"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label position=\"floating\">Capacity</ion-label>\n    <ion-input [(ngModel)]=\"table.capacity\"></ion-input>\n  </ion-item>\n  <ion-button expand=\"block\" (click)=\"save()\">Save</ion-button>\n  <ion-button *ngIf=\"!isCreatingNewTable\" color=\"warning\" expand=\"block\" (click)=\"toggleAvailability()\">Toggle Availability</ion-button>\n  <ion-button *ngIf=\"!isCreatingNewTable\" color=\"danger\" expand=\"block\" (click)=\"delete()\">Delete</ion-button>\n</ion-content>";
     /***/
   },
 
@@ -281,6 +281,24 @@
             const alert = yield this.alertController.create({
               header: 'Invalid Values',
               message: 'There are one or more invalid values, please check and try again.'
+            });
+            yield alert.present();
+          }
+        });
+      }
+
+      toggleAvailability() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table/toggle-availability?id=' + this.table.id, {
+            method: 'PUT'
+          });
+
+          if (response.ok) {
+            this.navController.navigateBack('/table');
+          } else {
+            const alert = yield this.alertController.create({
+              header: 'Fail to Toggle Availability',
+              message: 'Fail to toggle availability of the table, please try again.'
             });
             yield alert.present();
           }
