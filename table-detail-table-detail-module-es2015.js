@@ -217,7 +217,7 @@ let TableDetailPage = class TableDetailPage {
                         {
                             text: "Delete",
                             handler: () => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-                                const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table/delete?id=' + this.table.id, { method: 'DELETE' });
+                                const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table?id=' + this.table.id, { method: 'DELETE' });
                                 if (response.ok) {
                                     this.navController.navigateBack('/table');
                                 }

@@ -314,7 +314,7 @@
               buttons: ['Cancel', {
                 text: "Delete",
                 handler: () => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-                  const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table/delete?id=' + this.table.id, {
+                  const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/table?id=' + this.table.id, {
                     method: 'DELETE'
                   });
 
