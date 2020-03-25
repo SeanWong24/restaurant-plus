@@ -101,7 +101,7 @@ export class TableDetailPage implements OnInit {
             text: "Delete",
             handler: async () => {
               const response = await fetch(
-                localStorage.getItem('serverApiBaseUrl') + '/table/delete?id=' + this.table.id,
+                localStorage.getItem('serverApiBaseUrl') + '/table?id=' + this.table.id,
                 { method: 'DELETE' }
               );
               if (response.ok) {
