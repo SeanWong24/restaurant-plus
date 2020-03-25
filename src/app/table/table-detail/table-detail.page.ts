@@ -74,6 +74,22 @@ export class TableDetailPage implements OnInit {
     }
   }
 
+  async toggleAvailability() {
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/table/toggle-availability?id=' + this.table.id,
+      { method: 'PUT' }
+    );
+    if (response.ok) {
+      this.navController.navigateBack('/table');
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Fail to Toggle Availability',
+        message: 'Fail to toggle availability of the table, please try again.'
+      });
+      await alert.present();
+    }
+  }
+
   async delete() {
     if (!this.isCreatingNewTable) {
       const alert = await this.alertController.create({

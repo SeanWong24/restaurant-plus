@@ -17,5 +17,6 @@
     <ion-input [(ngModel)]="table.capacity"></ion-input>
   </ion-item>
   <ion-button expand="block" (click)="save()">Save</ion-button>
+  <ion-button *ngIf="!isCreatingNewTable" color="warning" expand="block" (click)="toggleAvailability()">Toggle Availability</ion-button>
   <ion-button *ngIf="!isCreatingNewTable" color="danger" expand="block" (click)="delete()">Delete</ion-button>
 </ion-content>
