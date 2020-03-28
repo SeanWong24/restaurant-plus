@@ -175,7 +175,7 @@ let MenuItemDetailPage = class MenuItemDetailPage {
                     '&gstRate=' + this.menuItem.gstRate +
                     '&pstRate=' + this.menuItem.pstRate +
                     '&lctRate=' + this.menuItem.lctRate +
-                    '&imageUrl=' + this.menuItem.imageUrl || 'Not Set', { method: 'POST' });
+                    '&imageUrl=' + this.menuItem.imageUrl || '(null)', { method: 'POST' });
                 if (response.ok) {
                     this.navController.navigateBack('/menu');
                 }
