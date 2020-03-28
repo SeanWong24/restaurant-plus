@@ -175,7 +175,7 @@ let MenuItemDetailPage = class MenuItemDetailPage {
                     '&gstRate=' + this.menuItem.gstRate +
                     '&pstRate=' + this.menuItem.pstRate +
                     '&lctRate=' + this.menuItem.lctRate +
-                    '&imageUrl=' + this.menuItem.imageUrl || '(null)', { method: 'POST' });
+                    '&imageUrl=' + (this.menuItem.imageUrl || '(null)'), { method: 'POST' });
                 if (response.ok) {
                     this.navController.navigateBack('/menu');
                 }
@@ -192,7 +192,7 @@ let MenuItemDetailPage = class MenuItemDetailPage {
                     '&gstRate=' + this.menuItem.gstRate +
                     '&pstRate=' + this.menuItem.pstRate +
                     '&lctRate=' + this.menuItem.lctRate +
-                    '&imageUrl=' + this.menuItem.imageUrl || '(null)', { method: 'PUT' });
+                    '&imageUrl=' + (this.menuItem.imageUrl || '(null)'), { method: 'PUT' });
                 if (response.ok) {
                     this.navController.navigateBack('/menu');
                 }

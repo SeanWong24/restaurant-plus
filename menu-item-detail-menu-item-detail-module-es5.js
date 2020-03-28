@@ -259,7 +259,7 @@
       save() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
           if (this.isCreatingNewItem && this.menuItem.name && this.menuItem.name !== 'new') {
-            const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item/add?' + 'name=' + this.menuItem.name + '&shortName=' + this.menuItem.shortName + '&unitPrice=' + this.menuItem.unitPrice + '&status=' + this.menuItem.status + '&categoryId=' + this.menuItem.categoryId + '&gstRate=' + this.menuItem.gstRate + '&pstRate=' + this.menuItem.pstRate + '&lctRate=' + this.menuItem.lctRate + '&imageUrl=' + this.menuItem.imageUrl || '(null)', {
+            const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item/add?' + 'name=' + this.menuItem.name + '&shortName=' + this.menuItem.shortName + '&unitPrice=' + this.menuItem.unitPrice + '&status=' + this.menuItem.status + '&categoryId=' + this.menuItem.categoryId + '&gstRate=' + this.menuItem.gstRate + '&pstRate=' + this.menuItem.pstRate + '&lctRate=' + this.menuItem.lctRate + '&imageUrl=' + (this.menuItem.imageUrl || '(null)'), {
               method: 'POST'
             });
 
@@ -267,7 +267,7 @@
               this.navController.navigateBack('/menu');
             }
           } else {
-            const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item/modify?' + 'id=' + this.menuItem.id + '&name=' + this.menuItem.name + '&shortName=' + this.menuItem.shortName + '&unitPrice=' + this.menuItem.unitPrice + '&status=' + this.menuItem.status + '&categoryId=' + this.menuItem.categoryId + '&gstRate=' + this.menuItem.gstRate + '&pstRate=' + this.menuItem.pstRate + '&lctRate=' + this.menuItem.lctRate + '&imageUrl=' + this.menuItem.imageUrl || '(null)', {
+            const response = yield fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item/modify?' + 'id=' + this.menuItem.id + '&name=' + this.menuItem.name + '&shortName=' + this.menuItem.shortName + '&unitPrice=' + this.menuItem.unitPrice + '&status=' + this.menuItem.status + '&categoryId=' + this.menuItem.categoryId + '&gstRate=' + this.menuItem.gstRate + '&pstRate=' + this.menuItem.pstRate + '&lctRate=' + this.menuItem.lctRate + '&imageUrl=' + (this.menuItem.imageUrl || '(null)'), {
               method: 'PUT'
             });
 
