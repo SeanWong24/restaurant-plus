@@ -247,6 +247,12 @@
             category,
             itemList: itemList.filter(item => item.categoryId === category.id)
           }));
+          this.menuList.push({
+            category: {
+              name: 'Not Categorized'
+            },
+            itemList: itemList.filter(item => !categoryList.find(category => category.id === item.categoryId))
+          });
           this.displayedMenuList = this.menuList;
         });
       }
