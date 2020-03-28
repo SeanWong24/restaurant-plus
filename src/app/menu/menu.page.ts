@@ -43,6 +43,10 @@ export class MenuPage implements OnInit {
     this.navControlor.navigateForward('/menu/category');
   }
 
+  goToMenuItemDetailView(itemId: string) {
+    this.navControlor.navigateForward('/menu/item/' + itemId);
+  }
+
 }
 
 

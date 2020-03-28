@@ -8,6 +8,9 @@
       <ion-button (click)="goToCategoryView()">
         <ion-icon slot="icon-only" name="book"></ion-icon>
       </ion-button>
+      <ion-button (click)="goToMenuItemDetailView('new')">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-searchbar showCancelButton="focus" animated></ion-searchbar>
@@ -19,7 +22,7 @@
       <ion-list-header>
         <ion-label>{{menu.category.name}}</ion-label>
       </ion-list-header>
-      <ion-item button *ngFor="let menuItem of menu.itemList">
+      <ion-item button *ngFor="let menuItem of menu.itemList" (click)="goToMenuItemDetailView(menuItem.id)">
         <ion-row>
           <ion-col>
             <ion-label>{{menuItem.name}}</ion-label>

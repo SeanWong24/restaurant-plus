@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isCreatingNewItem ? 'Create New Item' : menuItem.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item disabled>
+    <ion-label position="floating">Id</ion-label>
+    <ion-input [(ngModel)]="menuItem.id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="menuItem.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Short Name</ion-label>
+    <ion-input [(ngModel)]="menuItem.shortName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Category</ion-label>
+    <ion-select [(ngModel)]="menuItem.categoryId">
+      <ion-select-option *ngFor="let category of menuCategoryList" [value]="category.id">{{category.name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Status</ion-label>
+    <ion-select [(ngModel)]="menuItem.status">
+      <ion-select-option value="Available">Available</ion-select-option>
+      <ion-select-option value="Unavailable">Unavailable</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Unit Price</ion-label>
+    <ion-input type="number" [(ngModel)]="menuItem.unitPrice"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">GST Rate</ion-label>
+    <ion-input type="number" [(ngModel)]="menuItem.gstRate"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">PST Rate</ion-label>
+    <ion-input type="number" [(ngModel)]="menuItem.pstRate"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">LCT Rate</ion-label>
+    <ion-input type="number" [(ngModel)]="menuItem.lctRate"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="save()">Save</ion-button>
+</ion-content>
