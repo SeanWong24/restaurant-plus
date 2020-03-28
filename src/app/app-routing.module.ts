@@ -9,11 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'table',
-    loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
+    loadChildren: () => import('./table/table.module').then(m => m.TablePageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule)
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   }
 ];
 
@@ -23,4 +27,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
