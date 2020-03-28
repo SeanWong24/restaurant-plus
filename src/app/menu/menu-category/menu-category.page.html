@@ -4,11 +4,16 @@
       <ion-back-button defaultHref="/menu"></ion-back-button>
     </ion-buttons>
     <ion-title>Categories</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCategoryDetail('new')">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item button *ngFor="let category of categoryList">
+  <ion-item button *ngFor="let category of categoryList" (click)="goToCategoryDetail(category.id)">
     <ion-label>{{category.name}}</ion-label>
   </ion-item>
 </ion-content>
