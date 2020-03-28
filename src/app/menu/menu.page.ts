@@ -14,6 +14,10 @@ export class MenuPage implements OnInit {
     category: MenuCategory,
     itemList: MenuItem[]
   }[] = [];
+  displayedMenuList: {
+    category: MenuCategory,
+    itemList: MenuItem[]
+  }[] = [];
 
   constructor(private navControlor: NavController) { }
 
@@ -37,6 +41,22 @@ export class MenuPage implements OnInit {
         itemList: itemList.filter(item => item.categoryId === category.id)
       })
     );
+    this.displayedMenuList = this.menuList;
+  }
+
+  searchContentChangedHandler(value: string) {
+    if (value) {
+      this.displayedMenuList = this.menuList.map(menu => (
+        {
+          category: menu.category,
+          itemList: menu.category.name.match(new RegExp(value, 'i')) ?
+            menu.itemList :
+            menu.itemList.filter(item => item.name.match(new RegExp(value, 'i')))
+        }
+      )).filter(menu => menu.category.name.match(new RegExp(value, 'i')) || menu.itemList.length > 0);
+    } else {
+      this.displayedMenuList = this.menuList;
+    }
   }
 
   goToCategoryView() {

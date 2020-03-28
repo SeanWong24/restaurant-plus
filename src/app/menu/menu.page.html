@@ -13,12 +13,12 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar showCancelButton="focus" animated></ion-searchbar>
+  <ion-searchbar showCancelButton="focus" animated (ionChange)="searchContentChangedHandler($event.detail.value)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <div *ngFor="let menu of menuList">
+    <div *ngFor="let menu of displayedMenuList">
       <ion-list-header>
         <ion-label>{{menu.category.name}}</ion-label>
       </ion-list-header>
