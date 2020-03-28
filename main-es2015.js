@@ -717,6 +717,10 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | table-table-module */ "table-table-module").then(__webpack_require__.bind(null, /*! ./table/table.module */ "./src/app/table/table.module.ts")).then(m => m.TablePageModule)
     },
     {
+        path: 'menu',
+        loadChildren: () => __webpack_require__.e(/*! import() | menu-menu-module */ "menu-menu-module").then(__webpack_require__.bind(null, /*! ./menu/menu.module */ "./src/app/menu/menu.module.ts")).then(m => m.MenuPageModule)
+    },
+    {
         path: 'settings',
         loadChildren: () => __webpack_require__.e(/*! import() | settings-settings-module */ "settings-settings-module").then(__webpack_require__.bind(null, /*! ./settings/settings.module */ "./src/app/settings/settings.module.ts")).then(m => m.SettingsPageModule)
     }
@@ -780,6 +784,11 @@ let AppComponent = class AppComponent {
                 title: 'Table',
                 url: '/table',
                 icon: 'grid'
+            },
+            {
+                title: 'Menu',
+                url: '/menu',
+                icon: 'list'
             },
             {
                 title: 'Settings',
