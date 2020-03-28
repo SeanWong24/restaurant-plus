@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/menu\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>{{isCreatingNewItem ? 'Create New Item' : menuItem.name}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item disabled>\n    <ion-label position=\"floating\">Id</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.id\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Name</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.name\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Short Name</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.shortName\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Category</ion-label>\n    <ion-select [(ngModel)]=\"menuItem.categoryId\">\n      <ion-select-option *ngFor=\"let category of menuCategoryList\" [value]=\"category.id\">{{category.name}}\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Status</ion-label>\n    <ion-select [(ngModel)]=\"menuItem.status\">\n      <ion-select-option value=\"Available\">Available</ion-select-option>\n      <ion-select-option value=\"Unavailable\">Unavailable</ion-select-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Unit Price</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.unitPrice\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">GST Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.gstRate\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">PST Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.pstRate\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">LCT Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.lctRate\"></ion-input>\n  </ion-item>\n\n  <ion-button expand=\"block\" (click)=\"save()\">Save</ion-button>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/menu\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>{{isCreatingNewItem ? 'Create New Item' : menuItem.name}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item disabled>\n    <ion-label position=\"floating\">Id</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.id\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Name</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.name\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Short Name</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.shortName\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Category</ion-label>\n    <ion-select [(ngModel)]=\"menuItem.categoryId\">\n      <ion-select-option *ngFor=\"let category of menuCategoryList\" [value]=\"category.id\">{{category.name}}\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Status</ion-label>\n    <ion-select [(ngModel)]=\"menuItem.status\">\n      <ion-select-option value=\"Available\">Available</ion-select-option>\n      <ion-select-option value=\"Unavailable\">Unavailable</ion-select-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Unit Price</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.unitPrice\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">GST Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.gstRate\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">PST Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.pstRate\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">LCT Rate</ion-label>\n    <ion-input type=\"number\" [(ngModel)]=\"menuItem.lctRate\"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Image URL</ion-label>\n    <ion-input [(ngModel)]=\"menuItem.imageUrl\"></ion-input>\n  </ion-item>\n  <ion-img #menuItemImageElement [src]=\"menuItem.imageUrl\"\n    (ionError)=\"menuItemImageElement.src='https://unpkg.com/ionicons@5.0.0/dist/svg/restaurant-outline.svg'\">\n  </ion-img>\n\n  <ion-button expand=\"block\" (click)=\"save()\">Save</ion-button>\n</ion-content>");
 
 /***/ }),
 
@@ -101,7 +101,7 @@ MenuItemDetailPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lbnUvbWVudS1pdGVtLWRldGFpbC9tZW51LWl0ZW0tZGV0YWlsLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-img {\n  height: 100px;\n  width: 100px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3J1bm5lci93b3JrL3Jlc3RhdXJhbnQtcGx1cy1tYW5hZ2VtZW50L3Jlc3RhdXJhbnQtcGx1cy1tYW5hZ2VtZW50L3NyYy9hcHAvbWVudS9tZW51LWl0ZW0tZGV0YWlsL21lbnUtaXRlbS1kZXRhaWwucGFnZS5zY3NzIiwic3JjL2FwcC9tZW51L21lbnUtaXRlbS1kZXRhaWwvbWVudS1pdGVtLWRldGFpbC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0VBQ0EsWUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvbWVudS9tZW51LWl0ZW0tZGV0YWlsL21lbnUtaXRlbS1kZXRhaWwucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWltZyB7XG4gICAgaGVpZ2h0OiAxMDBweDtcbiAgICB3aWR0aDogMTAwcHg7XG59IiwiaW9uLWltZyB7XG4gIGhlaWdodDogMTAwcHg7XG4gIHdpZHRoOiAxMDBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -174,7 +174,8 @@ let MenuItemDetailPage = class MenuItemDetailPage {
                     '&categoryId=' + this.menuItem.categoryId +
                     '&gstRate=' + this.menuItem.gstRate +
                     '&pstRate=' + this.menuItem.pstRate +
-                    '&lctRate=' + this.menuItem.lctRate, { method: 'POST' });
+                    '&lctRate=' + this.menuItem.lctRate +
+                    '&imageUrl=' + this.menuItem.imageUrl || 'Not Set', { method: 'POST' });
                 if (response.ok) {
                     this.navController.navigateBack('/menu');
                 }
@@ -190,7 +191,8 @@ let MenuItemDetailPage = class MenuItemDetailPage {
                     '&categoryId=' + this.menuItem.categoryId +
                     '&gstRate=' + this.menuItem.gstRate +
                     '&pstRate=' + this.menuItem.pstRate +
-                    '&lctRate=' + this.menuItem.lctRate, { method: 'PUT' });
+                    '&lctRate=' + this.menuItem.lctRate +
+                    '&imageUrl=' + this.menuItem.imageUrl || '(null)', { method: 'PUT' });
                 if (response.ok) {
                     this.navController.navigateBack('/menu');
                 }
@@ -233,6 +235,7 @@ class MenuItem {
         this.gstRate = 0;
         this.pstRate = 0;
         this.lctRate = 0;
+        this.imageUrl = '';
     }
 }
 MenuItem.Status = {
