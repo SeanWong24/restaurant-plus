@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Menu</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryView()\">\n        <ion-icon slot=\"icon-only\" name=\"book\"></ion-icon>\n      </ion-button>\n      <ion-button (click)=\"goToMenuItemDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-searchbar showCancelButton=\"focus\" animated></ion-searchbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <div *ngFor=\"let menu of menuList\">\n      <ion-list-header>\n        <ion-label>{{menu.category.name}}</ion-label>\n      </ion-list-header>\n      <ion-item button *ngFor=\"let menuItem of menu.itemList\" (click)=\"goToMenuItemDetailView(menuItem.id)\">\n        <ion-row>\n          <ion-col>\n            <ion-label>{{menuItem.name}}</ion-label>\n          </ion-col>\n\n        </ion-row>\n        <ion-badge slot=\"end\" [color]=\"menuItem.status | menuItemStatusColor\">{{menuItem.status}}</ion-badge>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Menu</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryView()\">\n        <ion-icon slot=\"icon-only\" name=\"book\"></ion-icon>\n      </ion-button>\n      <ion-button (click)=\"goToMenuItemDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-searchbar showCancelButton=\"focus\" animated (ionChange)=\"searchContentChangedHandler($event.detail.value)\"></ion-searchbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <div *ngFor=\"let menu of displayedMenuList\">\n      <ion-list-header>\n        <ion-label>{{menu.category.name}}</ion-label>\n      </ion-list-header>\n      <ion-item button *ngFor=\"let menuItem of menu.itemList\" (click)=\"goToMenuItemDetailView(menuItem.id)\">\n        <ion-row>\n          <ion-col>\n            <ion-label>{{menuItem.name}}</ion-label>\n          </ion-col>\n\n        </ion-row>\n        <ion-badge slot=\"end\" [color]=\"menuItem.status | menuItemStatusColor\">{{menuItem.status}}</ion-badge>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>";
     /***/
   },
 
@@ -227,6 +227,7 @@
       constructor(navControlor) {
         this.navControlor = navControlor;
         this.menuList = [];
+        this.displayedMenuList = [];
       }
 
       ngOnInit() {}
@@ -246,7 +247,19 @@
             category,
             itemList: itemList.filter(item => item.categoryId === category.id)
           }));
+          this.displayedMenuList = this.menuList;
         });
+      }
+
+      searchContentChangedHandler(value) {
+        if (value) {
+          this.displayedMenuList = this.menuList.map(menu => ({
+            category: menu.category,
+            itemList: menu.category.name.match(new RegExp(value, 'i')) ? menu.itemList : menu.itemList.filter(item => item.name.match(new RegExp(value, 'i')))
+          })).filter(menu => menu.category.name.match(new RegExp(value, 'i')) || menu.itemList.length > 0);
+        } else {
+          this.displayedMenuList = this.menuList;
+        }
       }
 
       goToCategoryView() {
