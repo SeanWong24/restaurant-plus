@@ -4,6 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Menu</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCategoryView()">
+        <ion-icon slot="icon-only" name="book"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
   <ion-searchbar showCancelButton="focus" animated></ion-searchbar>
 </ion-header>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { MenuCategory } from '../models/menu-category';
 import { MenuItem } from '../models/menu-item';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuPage implements OnInit {
     itemList: MenuItem[]
   }[] = [];
 
-  constructor() { }
+  constructor(private navControlor: NavController) { }
 
   ngOnInit() {
   }
@@ -38,11 +39,16 @@ export class MenuPage implements OnInit {
     );
   }
 
+  goToCategoryView() {
+    this.navControlor.navigateForward('/menu/category');
+  }
+
 }
 
 
 @Pipe({ name: 'menuItemStatusColor' })
 export class MenuItemStatusColorPipe implements PipeTransform {
+
   transform(status: string): string {
     switch (status) {
       case 'Available':
@@ -51,4 +57,5 @@ export class MenuItemStatusColorPipe implements PipeTransform {
         return 'danger';
     }
   }
+
 }
