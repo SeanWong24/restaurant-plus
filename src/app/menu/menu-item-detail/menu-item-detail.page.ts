@@ -55,7 +55,8 @@ export class MenuItemDetailPage implements OnInit {
         '&categoryId=' + this.menuItem.categoryId +
         '&gstRate=' + this.menuItem.gstRate +
         '&pstRate=' + this.menuItem.pstRate +
-        '&lctRate=' + this.menuItem.lctRate,
+        '&lctRate=' + this.menuItem.lctRate +
+        '&imageUrl=' + (this.menuItem.imageUrl || '(null)'),
         { method: 'POST' }
       );
       if (response.ok) {
@@ -73,7 +74,8 @@ export class MenuItemDetailPage implements OnInit {
         '&categoryId=' + this.menuItem.categoryId +
         '&gstRate=' + this.menuItem.gstRate +
         '&pstRate=' + this.menuItem.pstRate +
-        '&lctRate=' + this.menuItem.lctRate,
+        '&lctRate=' + this.menuItem.lctRate +
+        '&imageUrl=' + (this.menuItem.imageUrl || '(null)'),
         { method: 'PUT' }
       );
       if (response.ok) {

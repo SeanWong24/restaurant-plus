@@ -13,4 +13,5 @@ export class MenuItem {
     gstRate: number = 0;
     pstRate: number = 0;
     lctRate: number = 0;
+    imageUrl: string = '';
 }

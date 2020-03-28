@@ -13,7 +13,8 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar showCancelButton="focus" animated (ionChange)="searchContentChangedHandler($event.detail.value)"></ion-searchbar>
+  <ion-searchbar showCancelButton="focus" animated (ionChange)="searchContentChangedHandler($event.detail.value)">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -23,12 +24,10 @@
         <ion-label>{{menu.category.name}}</ion-label>
       </ion-list-header>
       <ion-item button *ngFor="let menuItem of menu.itemList" (click)="goToMenuItemDetailView(menuItem.id)">
-        <ion-row>
-          <ion-col>
-            <ion-label>{{menuItem.name}}</ion-label>
-          </ion-col>
-
-        </ion-row>
+        <ion-img #menuItemImageElement slot="start" [src]="menuItem.imageUrl"
+          (ionError)="menuItemImageElement.src='https://unpkg.com/ionicons@5.0.0/dist/svg/restaurant-outline.svg'">
+        </ion-img>
+        <ion-label>{{menuItem.name}}</ion-label>
         <ion-badge slot="end" [color]="menuItem.status | menuItemStatusColor">{{menuItem.status}}</ion-badge>
       </ion-item>
     </div>
