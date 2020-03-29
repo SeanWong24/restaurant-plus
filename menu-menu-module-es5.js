@@ -232,6 +232,7 @@
 
       ionViewDidEnter() {
         this.menuList = undefined;
+        this.displayedMenuList = this.menuList;
         this.fetchMenuList();
       }
 
