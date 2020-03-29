@@ -790,6 +790,13 @@
       /*! ./menu/menu.module */
       "./src/app/menu/menu.module.ts")).then(m => m.MenuPageModule)
     }, {
+      path: 'anouncement',
+      loadChildren: () => __webpack_require__.e(
+      /*! import() | anouncement-anouncement-module */
+      "anouncement-anouncement-module").then(__webpack_require__.bind(null,
+      /*! ./anouncement/anouncement.module */
+      "./src/app/anouncement/anouncement.module.ts")).then(m => m.AnouncementPageModule)
+    }, {
       path: 'settings',
       loadChildren: () => __webpack_require__.e(
       /*! import() | settings-settings-module */
@@ -892,6 +899,10 @@
           title: 'Menu',
           url: '/menu',
           icon: 'list'
+        }, {
+          title: 'Anouncement',
+          url: '/anouncement',
+          icon: 'megaphone'
         }, {
           title: 'Settings',
           url: '/settings',

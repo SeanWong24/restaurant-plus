@@ -821,6 +821,37 @@
     };
     /***/
 
+  },
+
+  /***/
+  "./src/app/models/anouncement.ts":
+  /*!***************************************!*\
+    !*** ./src/app/models/anouncement.ts ***!
+    \***************************************/
+
+  /*! exports provided: Anouncement */
+
+  /***/
+  function srcAppModelsAnouncementTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Anouncement", function () {
+      return Anouncement;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    class Anouncement {}
+    /***/
+
   }
 }]);
 //# sourceMappingURL=common-es5.js.map
