@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class MenuCategoryPage implements OnInit {
 
-  categoryList = [] as MenuCategory[];
+  categoryList: MenuCategory[];
 
   constructor(private navController: NavController) { }
 
@@ -17,6 +17,7 @@ export class MenuCategoryPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.categoryList = undefined;
     this.fetchCategory();
   }
 

@@ -13,7 +13,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-item button *ngFor="let category of categoryList" (click)="goToCategoryDetail(category.id)">
-    <ion-label>{{category.name}}</ion-label>
-  </ion-item>
+  <ion-list *ngIf="categoryList">
+    <ion-item button *ngFor="let category of categoryList" (click)="goToCategoryDetail(category.id)">
+      <ion-label>{{category.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!categoryList">
+    <ion-item button *ngFor="let i of [1, 2, 3, 4, 5]">
+      <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+    </ion-item>
+  </ion-list>
 </ion-content>

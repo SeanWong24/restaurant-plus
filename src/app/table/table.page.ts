@@ -17,6 +17,7 @@ export class TablePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.tableList = undefined;
     this.fetchTableList();
   }
 

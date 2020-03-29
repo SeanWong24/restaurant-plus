@@ -13,11 +13,11 @@ export class MenuPage implements OnInit {
   menuList: {
     category: MenuCategory,
     itemList: MenuItem[]
-  }[] = [];
+  }[];
   displayedMenuList: {
     category: MenuCategory,
     itemList: MenuItem[]
-  }[] = [];
+  }[];
 
   constructor(private navControlor: NavController) { }
 
@@ -25,6 +25,8 @@ export class MenuPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.menuList = undefined;
+    this.displayedMenuList = this.menuList;
     this.fetchMenuList();
   }
 
@@ -41,10 +43,13 @@ export class MenuPage implements OnInit {
         itemList: itemList.filter(item => item.categoryId === category.id)
       })
     );
-    this.menuList.push({
-      category: { name: 'Not Categorized' } as any,
-      itemList: itemList.filter(item => !categoryList.find(category => category.id === item.categoryId))
-    });
+    const uncategorizedItemList = itemList.filter(item => !categoryList.find(category => category.id === item.categoryId));
+    if (uncategorizedItemList.length > 0) {
+      this.menuList.push({
+        category: { name: 'Not Categorized' } as any,
+        itemList: uncategorizedItemList
+      });
+    }
     this.displayedMenuList = this.menuList;
   }
 

@@ -18,7 +18,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="displayedMenuList">
     <div *ngFor="let menu of displayedMenuList">
       <ion-list-header>
         <ion-label>{{menu.category.name}}</ion-label>
@@ -29,6 +29,20 @@
         </ion-img>
         <ion-label>{{menuItem.name}}</ion-label>
         <ion-badge slot="end" [color]="menuItem.status | menuItemStatusColor">{{menuItem.status}}</ion-badge>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list *ngIf="!displayedMenuList">
+    <div *ngFor="let i of [1, 2, 3]">
+      <ion-list-header>
+        <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+      </ion-list-header>
+      <ion-item button *ngFor="let i of [1, 2, 3]">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+        <ion-skeleton-text slot="end" animated style="width: 50px;"></ion-skeleton-text>
       </ion-item>
     </div>
   </ion-list>
