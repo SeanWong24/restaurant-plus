@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Anouncements</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToModifyView('new')">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="anouncementList">
+    <ion-item button *ngFor="let anouncement of anouncementList" (click)="goToPreviewView(anouncement.id)">
+      <ion-label>{{anouncement.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!anouncementList">
+    <ion-item button *ngFor="let i of [1, 2, 3, 4, 5]">
+      <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

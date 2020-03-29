@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anouncement"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{anouncement.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToModifyView()">
+        <ion-icon slot="icon-only" name="pencil"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [innerHTML]="convertMarkdownToHtml(anouncement.content)"></div>
+</ion-content>

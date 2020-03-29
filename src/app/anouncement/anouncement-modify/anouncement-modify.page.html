@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/anouncement"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isCreatingNewAnouncement ? 'Create New Anouncement' : 'Modify Anouncement'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!isCreatingNewAnouncement" (click)="delete()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+      <ion-button (click)="save()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="upper-div">
+    <ion-input [(ngModel)]="anouncement.title"></ion-input>
+    <ion-note>{{anouncement.timeCreated}}</ion-note>
+  </div>
+  <div id="lower-div">
+    <textarea [(ngModel)]="anouncement.content"></textarea>
+  </div>
+</ion-content>

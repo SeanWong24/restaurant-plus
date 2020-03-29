@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule)
   },
   {
+    path: 'anouncement',
+    loadChildren: () => import('./anouncement/anouncement.module').then( m => m.AnouncementPageModule)
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   }
