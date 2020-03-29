@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/menu\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Categories</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryDetail('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item button *ngFor=\"let category of categoryList\" (click)=\"goToCategoryDetail(category.id)\">\n    <ion-label>{{category.name}}</ion-label>\n  </ion-item>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/menu\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Categories</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryDetail('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list *ngIf=\"categoryList\">\n    <ion-item button *ngFor=\"let category of categoryList\" (click)=\"goToCategoryDetail(category.id)\">\n      <ion-label>{{category.name}}</ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-list *ngIf=\"!categoryList\">\n    <ion-item button *ngFor=\"let i of [1, 2, 3, 4, 5]\">\n      <ion-skeleton-text animated style=\"width: 100px;\"></ion-skeleton-text>\n    </ion-item>\n  </ion-list>\n</ion-content>");
 
 /***/ }),
 
@@ -128,11 +128,11 @@ __webpack_require__.r(__webpack_exports__);
 let MenuCategoryPage = class MenuCategoryPage {
     constructor(navController) {
         this.navController = navController;
-        this.categoryList = [];
     }
     ngOnInit() {
     }
     ionViewDidEnter() {
+        this.categoryList = undefined;
         this.fetchCategory();
     }
     fetchCategory() {

@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Menu</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryView()\">\n        <ion-icon slot=\"icon-only\" name=\"book\"></ion-icon>\n      </ion-button>\n      <ion-button (click)=\"goToMenuItemDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-searchbar showCancelButton=\"focus\" animated (ionChange)=\"searchContentChangedHandler($event.detail.value)\">\n  </ion-searchbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <div *ngFor=\"let menu of displayedMenuList\">\n      <ion-list-header>\n        <ion-label>{{menu.category.name}}</ion-label>\n      </ion-list-header>\n      <ion-item button *ngFor=\"let menuItem of menu.itemList\" (click)=\"goToMenuItemDetailView(menuItem.id)\">\n        <ion-img #menuItemImageElement slot=\"start\" [src]=\"menuItem.imageUrl\"\n          (ionError)=\"menuItemImageElement.src='https://unpkg.com/ionicons@5.0.0/dist/svg/restaurant-outline.svg'\">\n        </ion-img>\n        <ion-label>{{menuItem.name}}</ion-label>\n        <ion-badge slot=\"end\" [color]=\"menuItem.status | menuItemStatusColor\">{{menuItem.status}}</ion-badge>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Menu</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToCategoryView()\">\n        <ion-icon slot=\"icon-only\" name=\"book\"></ion-icon>\n      </ion-button>\n      <ion-button (click)=\"goToMenuItemDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n  <ion-searchbar showCancelButton=\"focus\" animated (ionChange)=\"searchContentChangedHandler($event.detail.value)\">\n  </ion-searchbar>\n</ion-header>\n\n<ion-content>\n  <ion-list *ngIf=\"displayedMenuList\">\n    <div *ngFor=\"let menu of displayedMenuList\">\n      <ion-list-header>\n        <ion-label>{{menu.category.name}}</ion-label>\n      </ion-list-header>\n      <ion-item button *ngFor=\"let menuItem of menu.itemList\" (click)=\"goToMenuItemDetailView(menuItem.id)\">\n        <ion-img #menuItemImageElement slot=\"start\" [src]=\"menuItem.imageUrl\"\n          (ionError)=\"menuItemImageElement.src='https://unpkg.com/ionicons@5.0.0/dist/svg/restaurant-outline.svg'\">\n        </ion-img>\n        <ion-label>{{menuItem.name}}</ion-label>\n        <ion-badge slot=\"end\" [color]=\"menuItem.status | menuItemStatusColor\">{{menuItem.status}}</ion-badge>\n      </ion-item>\n    </div>\n  </ion-list>\n  <ion-list *ngIf=\"!displayedMenuList\">\n    <div *ngFor=\"let i of [1, 2, 3]\">\n      <ion-list-header>\n        <ion-skeleton-text animated style=\"width: 100px;\"></ion-skeleton-text>\n      </ion-list-header>\n      <ion-item button *ngFor=\"let i of [1, 2, 3]\">\n        <ion-thumbnail slot=\"start\">\n          <ion-skeleton-text animated></ion-skeleton-text>\n        </ion-thumbnail>\n        <ion-skeleton-text animated style=\"width: 100px;\"></ion-skeleton-text>\n        <ion-skeleton-text slot=\"end\" animated style=\"width: 50px;\"></ion-skeleton-text>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>";
     /***/
   },
 
@@ -226,13 +226,12 @@
     let MenuPage = class MenuPage {
       constructor(navControlor) {
         this.navControlor = navControlor;
-        this.menuList = [];
-        this.displayedMenuList = [];
       }
 
       ngOnInit() {}
 
       ionViewDidEnter() {
+        this.menuList = undefined;
         this.fetchMenuList();
       }
 
@@ -247,12 +246,17 @@
             category,
             itemList: itemList.filter(item => item.categoryId === category.id)
           }));
-          this.menuList.push({
-            category: {
-              name: 'Not Categorized'
-            },
-            itemList: itemList.filter(item => !categoryList.find(category => category.id === item.categoryId))
-          });
+          const uncategorizedItemList = itemList.filter(item => !categoryList.find(category => category.id === item.categoryId));
+
+          if (uncategorizedItemList.length > 0) {
+            this.menuList.push({
+              category: {
+                name: 'Not Categorized'
+              },
+              itemList: uncategorizedItemList
+            });
+          }
+
           this.displayedMenuList = this.menuList;
         });
       }

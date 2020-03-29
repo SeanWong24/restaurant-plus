@@ -15,7 +15,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Table</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item button *ngFor=\"let table of tableList\" (click)=\"goToDetailView(table.id)\">\n    <ion-row>\n      <ion-col>\n        <ion-label>{{table.name}}</ion-label>\n      </ion-col>\n      <ion-col>\n        <ion-label>({{table.occupied}}/{{table.capacity}})</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-badge slot=\"end\" [color]=\"table.status | tableStatusColor\">{{table.status}}</ion-badge>\n  </ion-item>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Table</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"goToDetailView('new')\">\n        <ion-icon slot=\"icon-only\" name=\"add\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list *ngIf=\"tableList\">\n    <ion-item button *ngFor=\"let table of tableList\" (click)=\"goToDetailView(table.id)\">\n      <ion-row>\n        <ion-col>\n          <ion-label>{{table.name}}</ion-label>\n        </ion-col>\n        <ion-col>\n          <ion-label>({{table.occupied}}/{{table.capacity}})</ion-label>\n        </ion-col>\n      </ion-row>\n      <ion-badge slot=\"end\" [color]=\"table.status | tableStatusColor\">{{table.status}}</ion-badge>\n    </ion-item>\n  </ion-list>\n  <ion-list *ngIf=\"!tableList\">\n    <ion-item button *ngFor=\"let i of [1, 2, 3, 4, 5]\">\n      <ion-row>\n        <ion-col>\n          <ion-skeleton-text animated style=\"width: 100px;\"></ion-skeleton-text>\n        </ion-col>\n        <ion-col>\n          <ion-skeleton-text animated style=\"width: 50px;\"></ion-skeleton-text>\n        </ion-col>\n      </ion-row>\n      <ion-skeleton-text slot=\"end\" animated style=\"width: 50px;\"></ion-skeleton-text>\n    </ion-item>\n  </ion-list>\n</ion-content>";
     /***/
   },
 
@@ -274,6 +274,7 @@
       ngOnInit() {}
 
       ionViewWillEnter() {
+        this.tableList = undefined;
         this.fetchTableList();
       }
 
