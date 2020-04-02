@@ -16,7 +16,7 @@ export class TablePage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.tableList = undefined;
     this.fetchTableList();
   }

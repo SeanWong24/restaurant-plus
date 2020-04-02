@@ -16,7 +16,7 @@ export class AnouncementPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.anouncementList = undefined;
     this.fetchAnouncementList();
   }
