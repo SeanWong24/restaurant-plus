@@ -273,7 +273,7 @@
 
       ngOnInit() {}
 
-      ionViewWillEnter() {
+      ionViewDidEnter() {
         this.tableList = undefined;
         this.fetchTableList();
       }

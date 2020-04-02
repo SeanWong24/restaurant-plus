@@ -224,7 +224,7 @@
 
       ngOnInit() {}
 
-      ionViewWillEnter() {
+      ionViewDidEnter() {
         this.anouncementList = undefined;
         this.fetchAnouncementList();
       }

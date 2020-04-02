@@ -163,7 +163,7 @@ let TablePage = class TablePage {
     }
     ngOnInit() {
     }
-    ionViewWillEnter() {
+    ionViewDidEnter() {
         this.tableList = undefined;
         this.fetchTableList();
     }
