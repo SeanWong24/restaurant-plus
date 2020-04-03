@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AnouncementModifyPageRoutingModule } from './anouncement-modify-routing.module';
 
 import { AnouncementModifyPage } from './anouncement-modify.page';
+import { TimeLocalISOStringPipe } from '../anouncement.page';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { AnouncementModifyPage } from './anouncement-modify.page';
     IonicModule,
     AnouncementModifyPageRoutingModule
   ],
-  declarations: [AnouncementModifyPage]
+  declarations: [
+    AnouncementModifyPage,
+    TimeLocalISOStringPipe
+  ]
 })
-export class AnouncementModifyPageModule {}
+export class AnouncementModifyPageModule { }

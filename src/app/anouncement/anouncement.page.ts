@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Anouncement } from "../models/anouncement";
 import { NavController } from '@ionic/angular';
+import { Table } from '../models/table';
 
 @Component({
   selector: 'app-anouncement',
@@ -32,6 +33,22 @@ export class AnouncementPage implements OnInit {
 
   goToPreviewView(anouncementId: string) {
     this.navController.navigateForward('/anouncement/' + anouncementId);
+  }
+
+}
+
+
+@Pipe({ name: 'timeLocalISOString' })
+export class TimeLocalISOStringPipe implements PipeTransform {
+
+  transform(timeISOString: string): string {
+    if (timeISOString) {
+      const standardTime = new Date(timeISOString);
+      const timezoneOffset = standardTime.getTimezoneOffset() * 60000;
+      return new Date(standardTime.getTime() - timezoneOffset).toISOString();
+    } else {
+      return timeISOString;
+    }
   }
 
 }

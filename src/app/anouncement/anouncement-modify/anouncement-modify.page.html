@@ -18,7 +18,7 @@
 <ion-content>
   <div id="upper-div">
     <ion-input [(ngModel)]="anouncement.title"></ion-input>
-    <ion-note>{{anouncement.timeCreated}}</ion-note>
+    <ion-note>{{anouncement.timeCreated | timeLocalISOString}}</ion-note>
   </div>
   <div id="lower-div">
     <textarea [(ngModel)]="anouncement.content"></textarea>

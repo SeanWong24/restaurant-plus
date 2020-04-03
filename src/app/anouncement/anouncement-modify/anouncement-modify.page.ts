@@ -36,7 +36,6 @@ export class AnouncementModifyPage implements OnInit {
   async save() {
     if (this.anouncement.title) {
       if (this.isCreatingNewAnouncement) {
-        this.anouncement.timeCreated = new Date().toISOString();
         const response = await fetch(
           localStorage.getItem('serverApiBaseUrl') + '/anouncement/add',
           {
