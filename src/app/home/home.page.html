@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="user && role">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Welcome, {{user.name}}!</ion-card-title>
+        <ion-card-subtitle>{{role.name}}</ion-card-subtitle>
+        <ion-text color="primary" *ngFor="let accessItem of role.accessList">{{accessItem}}; </ion-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-button expand="block" (click)="logout()">Log Out</ion-button>
+  </div>
+  <div *ngIf="!(user && role)">
+    <ion-text color="primary">You are not yet logged in, please enter your access code to log in.</ion-text>
+    <ion-item>
+      <ion-label position="floating">Access Code</ion-label>
+      <ion-input #accessCodeInput type="password" pattern="[0-9]*" inputmode="numeric" maxlength="6" clearInput="true">
+      </ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="login(accessCodeInput.value)">Log In</ion-button>
+  </div>
+</ion-content>

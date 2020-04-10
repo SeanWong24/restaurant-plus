@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { User } from './models/user';
+import { Role } from './models/role';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
+    {
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
+    },
     {
       title: 'Table',
       url: '/table',
@@ -33,6 +40,16 @@ export class AppComponent implements OnInit {
       icon: 'settings'
     }
   ];
+
+  get user() {
+    const userJson = sessionStorage.getItem('user');
+    return userJson ? JSON.parse(userJson) as User : undefined;
+  }
+
+  get role() {
+    const roleJson = sessionStorage.getItem('role');
+    return roleJson ? JSON.parse(roleJson) as Role : undefined;
+  }
 
   constructor(
     private platform: Platform,
