@@ -40,6 +40,7 @@ export class AnouncementModifyPage implements OnInit {
           localStorage.getItem('serverApiBaseUrl') + '/anouncement/add',
           {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.anouncement)
           }
@@ -59,6 +60,7 @@ export class AnouncementModifyPage implements OnInit {
           localStorage.getItem('serverApiBaseUrl') + '/anouncement/modify',
           {
             method: 'PUT',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.anouncement)
           }
@@ -94,7 +96,10 @@ export class AnouncementModifyPage implements OnInit {
             handler: async () => {
               const response = await fetch(
                 localStorage.getItem('serverApiBaseUrl') + '/anouncement?id=' + this.anouncement.id,
-                { method: 'DELETE' }
+                {
+                  method: 'DELETE',
+                  credentials: 'include'
+                }
               );
               if (response.ok) {
                 this.navController.navigateBack('/anouncement');
