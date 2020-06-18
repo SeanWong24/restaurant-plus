@@ -30,8 +30,14 @@ export class TableDetailPage implements OnInit {
   }
 
   async fetchTable(tableId: string) {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/table?id=' + tableId);
-    this.table = await response.json();
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/table?id=' + tableId,
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
+    this.table = (await response.json())[0];
   }
 
   async save() {
@@ -39,7 +45,10 @@ export class TableDetailPage implements OnInit {
       if (this.isCreatingNewTable) {
         const response = await fetch(
           localStorage.getItem('serverApiBaseUrl') + '/table/add?name=' + this.table.name + '&capacity=' + this.table.capacity,
-          { method: 'POST' }
+          {
+            method: 'POST',
+            credentials: 'include'
+          }
         );
         if (response.ok) {
           this.navController.navigateBack('/table');
@@ -53,7 +62,10 @@ export class TableDetailPage implements OnInit {
       } else {
         const response = await fetch(
           localStorage.getItem('serverApiBaseUrl') + '/table/modify?id=' + this.table.id + '&name=' + this.table.name + '&capacity=' + this.table.capacity,
-          { method: 'PUT' }
+          {
+            method: 'PUT',
+            credentials: 'include'
+          }
         );
         if (response.ok) {
           this.navController.navigateBack('/table');
@@ -77,7 +89,10 @@ export class TableDetailPage implements OnInit {
   async toggleAvailability() {
     const response = await fetch(
       localStorage.getItem('serverApiBaseUrl') + '/table/toggle-availability?id=' + this.table.id,
-      { method: 'PUT' }
+      {
+        method: 'PUT',
+        credentials: 'include'
+      }
     );
     if (response.ok) {
       this.navController.navigateBack('/table');
@@ -102,7 +117,10 @@ export class TableDetailPage implements OnInit {
             handler: async () => {
               const response = await fetch(
                 localStorage.getItem('serverApiBaseUrl') + '/table?id=' + this.table.id,
-                { method: 'DELETE' }
+                {
+                  method: 'DELETE',
+                  credentials: 'include'
+                }
               );
               if (response.ok) {
                 this.navController.navigateBack('/table');

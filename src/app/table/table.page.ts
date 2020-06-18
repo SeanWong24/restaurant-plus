@@ -22,7 +22,13 @@ export class TablePage implements OnInit {
   }
 
   async fetchTableList() {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/table');
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/table',
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
     this.tableList = await response.json();
   }
 
