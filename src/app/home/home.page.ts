@@ -102,7 +102,7 @@ export class HomePage implements OnInit {
       );
       if (response.status === 200) {
         try {
-          this.role = await response.json();
+          this.role = (await response.json())[0];
           return;
         } catch { }
       }

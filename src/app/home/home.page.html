@@ -13,7 +13,7 @@
       <ion-card-header>
         <ion-card-title>Welcome, {{user.name}}!</ion-card-title>
         <ion-card-subtitle>{{role.name}}</ion-card-subtitle>
-        <ion-text color="primary" *ngFor="let accessItem of role.accessList">{{accessItem}}; </ion-text>
+        <ion-text color="primary" *ngFor="let accessItem of role.permissionList">{{accessItem}}; </ion-text>
       </ion-card-header>
     </ion-card>
     <ion-button expand="block" (click)="logout()">Log Out</ion-button>
