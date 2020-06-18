@@ -32,9 +32,21 @@ export class MenuPage implements OnInit {
 
   async fetchMenuList() {
     this.menuList = [];
-    let response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/category');
+    let response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/category',
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
     const categoryList = await response.json() as MenuCategory[];
-    response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item');
+    response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/item',
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
     const itemList = await response.json() as MenuItem[];
 
     categoryList.forEach(category =>

@@ -29,8 +29,14 @@ export class MenuCategoryDetailPage implements OnInit {
   }
 
   async fetchCategory(categoryId: string) {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/category?id=' + categoryId);
-    this.category = await response.json();
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/category?id=' + categoryId,
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
+    this.category = (await response.json())[0];
   }
 
   async save() {
@@ -39,7 +45,10 @@ export class MenuCategoryDetailPage implements OnInit {
         localStorage.getItem('serverApiBaseUrl') +
         '/menu/category/add?' +
         'name=' + this.category.name,
-        { method: 'POST' }
+        {
+          method: 'POST',
+          credentials: 'include'
+        }
       );
       if (response.ok) {
         this.navController.navigateBack('/menu/category');
@@ -50,7 +59,10 @@ export class MenuCategoryDetailPage implements OnInit {
         '/menu/category/modify?' +
         'id=' + this.category.id +
         '&name=' + this.category.name,
-        { method: 'PUT' }
+        {
+          method: 'PUT',
+          credentials: 'include'
+        }
       );
       if (response.ok) {
         this.navController.navigateBack('/menu/category');

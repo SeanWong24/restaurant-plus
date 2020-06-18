@@ -34,13 +34,25 @@ export class MenuItemDetailPage implements OnInit {
   }
 
   async fetchCategory() {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/category');
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/category',
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
     this.menuCategoryList = await response.json();
   }
 
   async fetchMenuItem(itemId: string) {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/item?id=' + itemId);
-    this.menuItem = await response.json();
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/item?id=' + itemId,
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
+    this.menuItem = (await response.json())[0];
   }
 
   async save() {
@@ -57,7 +69,10 @@ export class MenuItemDetailPage implements OnInit {
         '&pstRate=' + this.menuItem.pstRate +
         '&lctRate=' + this.menuItem.lctRate +
         '&imageUrl=' + (this.menuItem.imageUrl || '(null)'),
-        { method: 'POST' }
+        {
+          method: 'POST',
+          credentials: 'include'
+        }
       );
       if (response.ok) {
         this.navController.navigateBack('/menu');
@@ -76,7 +91,10 @@ export class MenuItemDetailPage implements OnInit {
         '&pstRate=' + this.menuItem.pstRate +
         '&lctRate=' + this.menuItem.lctRate +
         '&imageUrl=' + (this.menuItem.imageUrl || '(null)'),
-        { method: 'PUT' }
+        {
+          method: 'PUT',
+          credentials: 'include'
+        }
       );
       if (response.ok) {
         this.navController.navigateBack('/menu');

@@ -22,7 +22,13 @@ export class MenuCategoryPage implements OnInit {
   }
 
   async fetchCategory() {
-    let response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/menu/category');
+    let response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/menu/category',
+      {
+        method: 'GET',
+        credentials: 'include'
+      }
+    );
     this.categoryList = await response.json();
   }
 
