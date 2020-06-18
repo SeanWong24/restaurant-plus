@@ -9,7 +9,7 @@ const routes: Routes = [
     component: DiscountPage
   },
   {
-    path: 'discount-detail',
+    path: ':id',
     loadChildren: () => import('./discount-detail/discount-detail.module').then( m => m.DiscountDetailPageModule)
   }
 ];
