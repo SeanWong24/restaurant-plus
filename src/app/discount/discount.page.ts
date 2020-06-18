@@ -31,17 +31,20 @@ export class DiscountPage implements OnInit {
     this.discountList = await response.json();
   }
 
-  goToDetailView(tableId: string) {
-    this.navController.navigateForward('/table/' + tableId);
+  goToDetailView(discountId: string) {
+    this.navController.navigateForward('/discount/' + discountId);
   }
 }
 
-// @Pipe({ name: 'discountStatusColor' })
-// export class DiscountStatusColorPipe implements PipeTransform {
+@Pipe({ name: 'discountStatusColor' })
+export class DiscountStatusColorPipe implements PipeTransform {
 
-//     transform(status: string): string {
-//       switch (status) {
-//         case Discount.
-//       }
-//     }
-// }
+    transform(status: string): string {
+      switch (status) {
+        case Discount.Status.Available:
+          return 'success';
+        case Discount.Status.Unavailable:
+          return 'danger';
+      }
+    }
+}

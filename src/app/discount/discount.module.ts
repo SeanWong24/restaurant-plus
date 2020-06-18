@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DiscountPageRoutingModule } from './discount-routing.module';
 
-import { DiscountPage } from './discount.page';
+import { DiscountPage, DiscountStatusColorPipe } from './discount.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { DiscountPage } from './discount.page';
     IonicModule,
     DiscountPageRoutingModule
   ],
-  declarations: [DiscountPage]
+  declarations: [DiscountPage, DiscountStatusColorPipe]
 })
 export class DiscountPageModule {}

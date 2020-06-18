@@ -1,11 +1,17 @@
 export class Discount {
-    static readonly type = {
-      Amount: "amount",
-      Percentage: "percentage",
+    static readonly Type = {
+      Amount: 'amount',
+      Percentage: 'percentage',
     };
   
+    static readonly Status = {
+      Available: 'available',
+      Unavailable: 'unavailable',
+    }
+
     id?: string;
     name?: string;
     type?: string;
     value?: number;
+    status: string = Discount.Status.Unavailable;
   }

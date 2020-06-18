@@ -20,7 +20,7 @@
           <ion-label>{{discount.name}}</ion-label>
         </ion-col>
       </ion-row>
-      <!-- <ion-badge slot="end" [color]="discount.status | discountStatusColor">{{discount.status}}</ion-badge> -->
+      <ion-badge slot="end" [color]="discount.status | discountStatusColor">{{discount.status}}</ion-badge>
     </ion-item>
   </ion-list>
   <ion-list *ngIf="!discountList">
