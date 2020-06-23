@@ -61,7 +61,10 @@ export class DiscountDetailPage implements OnInit {
           '&type=' + this.discount.type +
           '&value=' + this.discount.value +
           '&status=' + this.discount.status,
-          { method: 'POST' }
+          {
+            method: 'POST',
+            credentials: 'include'
+          }
         );
         if (response.ok) {
           this.navController.navigateBack('/discount');
@@ -75,7 +78,10 @@ export class DiscountDetailPage implements OnInit {
       } else {
         const response = await fetch(
           localStorage.getItem('serverApiBaseUrl') + '/bill/discount/modify?id=' + this.discount.id + '&name=' + this.discount.name,
-          { method: 'PUT' }
+          {
+            method: 'PUT',
+            credentials: 'include'
+          }
         );
         if (response.ok) {
           this.navController.navigateBack('/discount');
@@ -99,7 +105,10 @@ export class DiscountDetailPage implements OnInit {
   async toggleAvailability() {
     const response = await fetch(
       localStorage.getItem('serverApiBaseUrl') + '/bill/discount/toggle-availability?id=' + this.discount.id,
-      { method: 'PUT' }
+      {
+        method: 'PUT',
+        credentials: 'include'
+      }
     );
     if (response.ok) {
       this.navController.navigateBack('/discount');
