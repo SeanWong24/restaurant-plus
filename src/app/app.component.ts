@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -59,7 +60,8 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private location: Location
   ) {
     this.initializeApp();
   }
@@ -71,5 +73,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    const currentPath = this.location.path();
+    this.selectedIndex = this.appPages.findIndex(page => page.url === currentPath);
+  }
 }
