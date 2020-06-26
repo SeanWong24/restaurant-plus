@@ -24,7 +24,13 @@ export class AnouncementViewPage implements OnInit {
   }
 
   async fetchAnouncement(anouncementId: string) {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/anouncement?id=' + anouncementId);
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/anouncement?id=' + anouncementId,
+      {
+        method: 'GET',
+        credentials: "include"
+      }
+    );
     this.anouncement = await response.json();
   }
 

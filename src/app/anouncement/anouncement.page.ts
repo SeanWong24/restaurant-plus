@@ -23,7 +23,13 @@ export class AnouncementPage implements OnInit {
   }
 
   async fetchAnouncementList() {
-    const response = await fetch(localStorage.getItem('serverApiBaseUrl') + '/anouncement');
+    const response = await fetch(
+      localStorage.getItem('serverApiBaseUrl') + '/anouncement',
+      {
+        method: 'GET',
+        credentials: "include"
+      }
+    );
     this.anouncementList = await response.json();
   }
 
