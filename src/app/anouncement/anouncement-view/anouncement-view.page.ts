@@ -31,7 +31,7 @@ export class AnouncementViewPage implements OnInit {
         credentials: "include"
       }
     );
-    this.anouncement = await response.json();
+    this.anouncement = (await response.json())[0];
   }
 
   convertMarkdownToHtml(markdownContent: string) {

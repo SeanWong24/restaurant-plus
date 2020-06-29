@@ -36,7 +36,7 @@ export class AnouncementModifyPage implements OnInit {
           credentials: "include"
         }
       );
-    this.anouncement = await response.json();
+    this.anouncement = (await response.json())[0];
   }
 
   async save() {
